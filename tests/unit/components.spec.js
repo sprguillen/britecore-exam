@@ -141,3 +141,15 @@ describe('Datatable.vue', () => {
     expect(wrapper.find('#search-text').attributes('disabled')).to.be.undefined
   })
 })
+
+describe('EditModal.vue', () => {
+  it('Checks if edit modal is rendered properly', () => {
+    const wrapper = shallowMount(EditModal, {
+      propsData: {
+        showDialog: true
+      }
+    })
+
+    expect(wrapper.find('.headline').text()).to.equal('Edit description')
+  })
+})
