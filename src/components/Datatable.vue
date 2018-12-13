@@ -113,6 +113,7 @@
        */
       searchItem(value) {
         let newItems = []
+        value = value.toLowerCase()
 
         if (value.length > 0) {
           let indexes = this.tableItems.reduce((a, e, i) => {
