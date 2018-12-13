@@ -21,6 +21,10 @@ though. Given the short time to work this project and since it's my first time u
 using Bootstrap-vue on my last project), I wasn't sure if Mocha was the best tool to test Vuetify. 
 I thought in the end that I should have used Jest. Hopefully though my work will pass your standards. :)
 
+The project was deployed thru this method: https://cli.vuejs.org/guide/deployment.html#github-pages
+
+Here is the deployed site: https://sprguillen.github.io/britecore-exam/
+
 ## Project setup
 
 To install the dependencies just run yarn. Make sure that vue-cli 3 is installed by running ```npm install -g @vue/cli```.
