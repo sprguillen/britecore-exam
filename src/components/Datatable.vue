@@ -6,10 +6,10 @@
           <h3>Filter Results</h3>
         </v-flex>
         <v-flex xs12 sm4 md4>
-          <v-select label="Field to filter" v-model="searchField" :items="fields"></v-select>
+          <v-select id="search-field" label="Field to filter" v-model="searchField" :items="fields"></v-select>
         </v-flex>
         <v-flex xs12 sm4 md4 offset-sm4 offset-md4>
-          <v-text-field label="Search" @input="searchItem($event)" :disabled="searchField === null"></v-text-field>
+          <v-text-field id="search-text" label="Search" @input="searchItem($event)" :disabled="searchField === null"></v-text-field>
         </v-flex>
       </v-layout>
       <!-- I did not use the data table and functions provided by Vuetify and instead created my own -->
@@ -31,8 +31,8 @@
       </table>
       <v-layout>
         <v-flex xs12 sm4 md4>
-          <v-btn color="error" @click="prevPage" :disabled="this.start === 0">Prev</v-btn>
-          <v-btn color="info" @click="nextPage" :disabled="Math.ceil(tableItems.length / 10) * 10 === this.end">Next</v-btn>
+          <v-btn id="prev-btn" color="error" @click="prevPage" :disabled="this.start === 0">Prev</v-btn>
+          <v-btn id="next-btn" color="info" @click="nextPage" :disabled="Math.ceil(tableItems.length / 10) * 10 === this.end">Next</v-btn>
         </v-flex>
       </v-layout>
       <EditModal :showDialog="dialog" @close="closeModal" @saveNewDesc="updateDesc" />
@@ -88,8 +88,9 @@
        * @private
        */
       sortItems(key) {
+        console.log('masturbate')
         const fieldKey = this.fields[key]
-        this.items = this.items.sort((a, b) => {
+        this.tableItems = this.tableItems.sort((a, b) => {
           if (fieldKey === 'amount') {
             if (parseFloat(a[fieldKey]) < parseFloat(b[fieldKey])) {
               return -1
