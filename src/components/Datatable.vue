@@ -23,14 +23,14 @@
         </thead>
         <tbody>
           <tr v-for="(item, key) in paginatedData" :key="key">
-            <td v-for="field in fields" :key="item[field]" @click="editItem(item)" :style="classObject(field)">
+            <td v-for="field in fields" :key="item[field]" @click="editItem(item)" :class="{ 'align-right': field === 'amount' }">
               {{ item[field] }}
             </td>
           </tr>
         </tbody>
       </table>
       <v-layout>
-        <v-flex xs12 sm4 md4>
+        <v-flex xs12 sm12 md4>
           <v-btn id="prev-btn" color="error" @click="prevPage" :disabled="this.start === 0">Prev</v-btn>
           <v-btn id="next-btn" color="info" @click="nextPage" :disabled="Math.ceil(tableItems.length / 10) * 10 === this.end">Next</v-btn>
         </v-flex>
@@ -88,7 +88,6 @@
        * @private
        */
       sortItems(key) {
-        console.log('masturbate')
         const fieldKey = this.fields[key]
         this.tableItems = this.tableItems.sort((a, b) => {
           if (fieldKey === 'amount') {
@@ -170,20 +169,6 @@
         const index = this.tableItems.findIndex(obj => obj.id === this.itemId)
         this.tableItems[index].description = value;
       },
-      /**
-       * Class object depending on which field should we apply our class in
-       */
-      classObject(field) {
-        if (field === 'amount') {
-          return {
-            'text-align': 'right'
-          }
-        }
-
-        return {
-          'text-align': 'left'
-        }
-      }
     },
     computed: {
       /**
@@ -234,7 +219,11 @@
     background-color: #f2f2f2;
   }
 
-  @media (max-width: 576px) {
+  .align-right {
+    text-align: right;
+  }
+
+  @media (max-width: 768px) {
     .datatable-class thead {
       display: none;
     }
@@ -243,6 +232,7 @@
     .datatable-class th,
     .datatable-class td {
       display: block;
+      text-align: left;
     }
 
     .datatable-class td:nth-of-type(1):before {
