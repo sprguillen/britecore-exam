@@ -1,0 +1,32 @@
+{
+	"first_name": "Simon Phillip",
+	"middle_name": "Ramos",
+	"last_name": "Guillen",
+	"country_of_origin": "Philippines",
+	"city_of_origin": "Davao City",
+	"hobbies": [
+		"Playing bass guitar",
+		"Going to the gym",
+		"PC/Mobile Games"
+	],
+	"civil_status": "Married",
+	"children": 1,
+	"date_of_birth": "02-18-1991",
+	"years_of_experience": "5",
+	"preferred_programming_lang": [
+		"javascript",
+		"PHP"
+	],
+	"height": "5'6ft",
+	"weight": "73kg",
+	"email_address": [
+		"sprguillen@gmail.com",
+		"simonbass23@gmail.com"
+	],
+	"phone_number": [
+		"+639178641192"
+	],
+	"linked_in": "https://www.linkedin.com/in/simon-guillen",
+	"facebook": "https://www.facebook.com/simonbass23",
+	"github": "https://github.com/sprguillen"
+}
