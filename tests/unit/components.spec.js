@@ -143,13 +143,37 @@ describe('Datatable.vue', () => {
 })
 
 describe('EditModal.vue', () => {
-  it('Checks if edit modal is rendered properly', () => {
-    const wrapper = shallowMount(EditModal, {
+  it('Checks if computed property to display modal is working depending on prop showDialog', () => {
+    let wrapper = shallowMount(EditModal, {
+      propsData: {
+        showDialog: false
+      }
+    })
+
+    expect(wrapper.vm.dialogStatus).to.be.false
+    
+    wrapper = shallowMount(EditModal, {
       propsData: {
         showDialog: true
       }
     })
 
-    expect(wrapper.find('.headline').text()).to.equal('Edit description')
+    expect(wrapper.vm.dialogStatus).to.be.true
+  })
+
+  it('Tests parent to child communication', () => {
+    const parentWrapper = shallowMount(Datatable, {
+      propsData: {
+        items
+      }
+    })
+
+    expect(parentWrapper.vm.dialog).to.be.false
+
+    parentWrapper.find('table')
+      .find('tbody > tr > td:first-child')
+      .trigger('click')
+
+    expect(parentWrapper.vm.dialog).to.be.true
   })
 })
