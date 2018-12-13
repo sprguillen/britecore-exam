@@ -2,7 +2,7 @@
 
 As provided by the instructions given by the BriteCore Engineering team, here is my deliverable. 
 This is written on VueJS. Sample data from the google doc is hard coded as a reactive data on 
-the ./src/components/Dashboard.vue. There it should pass the data as a prop for the datatable 
+the **./src/components/Dashboard.vue**. There it should pass the data as a prop for the datatable 
 component. Although the UI is written mostly on Vuetify, the table is in HTML (as per instruction 
 that the datatable component should be my own and not from a UI pattern library). It has a simple 
 filter + search functionality and responsiveness where on a small browser the table should be stacked. 
