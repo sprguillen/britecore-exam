@@ -150,6 +150,7 @@ describe('EditModal.vue', () => {
       }
     })
 
+    // Dialog status computed property should be false because showDialog prop is false
     expect(wrapper.vm.dialogStatus).to.be.false
     
     wrapper = shallowMount(EditModal, {
@@ -158,6 +159,7 @@ describe('EditModal.vue', () => {
       }
     })
 
+    // Otherwise, dialog status is true because show dialog is true
     expect(wrapper.vm.dialogStatus).to.be.true
   })
 
@@ -175,5 +177,32 @@ describe('EditModal.vue', () => {
       .trigger('click')
 
     expect(parentWrapper.vm.dialog).to.be.true
+
+    let showDialog = parentWrapper.vm.dialog
+
+    const childWrapper = shallowMount(EditModal, {
+      propsData: {
+        showDialog
+      }
+    })
+
+    expect(childWrapper.vm.dialogStatus).to.be.true
+  })
+
+  it('Tests close modal functions', () => {
+    const wrapper = shallowMount(EditModal, {
+      propsData: {
+        showDialog: true
+      }
+    })
+
+    // When close modal is called, new description data property should
+    // be null (means that on modal close the new description textbox
+    // should be cleared)
+    const testDesc = 'test'
+    wrapper.setData({ 'newDescription': testDesc })
+    expect(wrapper.vm.newDescription).to.equal(testDesc)
+    wrapper.vm.closeModal()
+    expect(wrapper.vm.newDescription).to.be.null
   })
 })
