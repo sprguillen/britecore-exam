@@ -1,11 +1,13 @@
 # britecore-exam
 
 As provided by the instructions given by the BriteCore Engineering team, here is my deliverable. 
-This is written on VueJS. Sample data from the google doc is hard coded as a reactive data on 
-the **./src/components/Dashboard.vue**. There it should pass the data as a prop for the datatable 
-component. Although the UI is written mostly on Vuetify, the table is in HTML (as per instruction 
-that the datatable component should be my own and not from a UI pattern library). It has a simple 
-filter + search functionality and responsiveness where on a small browser the table should be stacked. 
+This is written on VueJS. Sample data from the google doc is hard coded to the vuex store which
+will the **./src/components/Dashboard.vue** will get using a vuex getter. 
+There it should pass the data as a prop for the datatable component. Although the UI is written
+mostly on Vuetify, the table is in HTML (as per instruction that the datatable component should
+be my own and not from a UI pattern library). It has a simple filter + search functionality 
+and responsiveness where on a small browser the table should be stacked. 
+
 The columns are only sortable (one-way: ASC) by clicking the header of each column, it will sort the 
 ids, names, descriptions, dates and amounts on ascending order. To edit a description, simply 
 click a row and a modal should appear. This modal is a different vue component separate 
@@ -13,10 +15,8 @@ from the datatable component.
 
 The project has 2 important components at work: **./src/components/Datatable.vue** and 
 **./src/components/EditModal.vue;** please feel free to check, I almost made sure that there are code 
-comments. The edit modal component does not directly edit the description, instead it handles the 
-display of the modal where the user enter a new description and should pass the data containing the 
-new description to the parent using emit (a form of communication from child to parent component in 
-VueJS without the use of state management such as VueX or an EventBus). The datatable component is
+comments. The edit modal component changes the description by calling a vuex mutation that will mutate
+the payment store (which is a hard-coded mock data). The datatable component is
 semi-adaptable in that it can accept props and display them depending on the props given but in the
 real world I would have remove parts of the code where filters are static (I wrote it to cater
 specifically on the sample data given). But it will not be much of a hardwork because the framework
