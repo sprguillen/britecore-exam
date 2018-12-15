@@ -35,7 +35,7 @@
           <v-btn id="next-btn" color="info" @click="nextPage" :disabled="Math.ceil(tableItems.length / 10) * 10 === this.end">Next</v-btn>
         </v-flex>
       </v-layout>
-      <EditModal :showDialog="dialog" @close="closeModal" @saveNewDesc="updateDesc" />
+      <EditModal :showDialog="dialog" :id="itemId" @close="closeModal" />
     </v-container>
   </v-app>
 </template>
@@ -158,17 +158,7 @@
        */
       closeModal() {
         this.dialog = false
-      },
-      /**
-       * Edit description with new value from child component EditModal
-       * @params value: string - containing the new description
-       * @private
-       */
-      updateDesc(value) {
-        this.dialog = false
-        const index = this.tableItems.findIndex(obj => obj.id === this.itemId)
-        this.tableItems[index].description = value;
-      },
+      }
     },
     computed: {
       /**

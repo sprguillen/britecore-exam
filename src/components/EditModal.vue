@@ -22,8 +22,12 @@
     props: {
       showDialog: {
         type: Boolean,
-        required: true,
+        required: true, 
         default: false
+      },
+      id: {
+        type: String,
+        required: true
       }
     },
     data() {
@@ -49,7 +53,14 @@
        * Send emit new description event with the new description
        */
       passNewDesc() {
-        this.$emit('saveNewDesc', this.newDescription)
+        // this.$emit('saveNewDesc', this.newDescription)
+        // this.newDescription = null
+        const newDesc = this.newDescription
+        const id = this.id
+        this.$store.commit('updateDescription', { id, newDesc })
+
+        this.$toasted.success('Successfully updated description')
+        this.$emit('close')
         this.newDescription = null
       }
     }
